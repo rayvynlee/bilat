@@ -1,0 +1,5 @@
+#!/bin/bash
+
+. /etc/openvpn/script/config.sh
+
+mysql -u $USER -p$PASS -D $DB -h $HOST -sN -e "UPDATE users SET users.is_active=1 WHERE user_name='$common_name' "
