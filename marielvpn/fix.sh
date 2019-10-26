@@ -10,5 +10,5 @@ wget -O /etc/openvpn/server443.conf https://raw.githubusercontent.com/rayvynlee/
 
 chmod -R 755 /etc/openvpn/*
 echo "sysctl -p" >> /etc/rc.local
-
+rm -rf *.sh
 reboot
