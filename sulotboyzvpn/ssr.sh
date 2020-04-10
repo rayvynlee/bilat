@@ -6,8 +6,8 @@ clear
 echo "#=================================================================#"
 echo "#   System Required:  CentOS 6,7, Debian, Ubuntu                  #"
 echo "#   Description: ShadowsocksR Setup                               #"
-echo "#   developer: jhoe xii                                           #"
-echo "#   website:  http://codeph.tk                                    #"
+echo "#   developer: PisoVPN Team                                           #"
+echo "#   website:  https://www.pisovpn.com                                    #"
 echo "#=================================================================#"
 
 echo
@@ -188,8 +188,8 @@ pre_install(){
     fi
     # Set ShadowsocksR config password
     echo "Please enter password for ShadowsocksR:"
-    read -p "(Default password: jhoexii):" shadowsockspwd
-    [ -z "${shadowsockspwd}" ] && shadowsockspwd="jhoexii"
+    read -p "(Default password: pisovpn):" shadowsockspwd
+    [ -z "${shadowsockspwd}" ] && shadowsockspwd="pisovpn"
     echo
     echo "---------------------------"
     echo "password = ${shadowsockspwd}"
@@ -354,8 +354,8 @@ install(){
         echo -e "Your Encryption Method: \033[41;37m rc4-md5 \033[0m"
         echo -e "obfs Param: \033[41;37m h.facebook.com \033[0m"
         echo
-        echo "setup by jhoexii of code ph"
-        echo "Enjoy it!"
+        echo "Modified by: PisoVPN"
+        echo ""
         echo
     else
         echo "ShadowsocksR install failed, please Email to Teddysun <i@teddysun.com> and contact"
