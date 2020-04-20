@@ -13,7 +13,7 @@ client-cert-not-required
 auth-user-pass-verify /etc/openvpn/script/login via-env
 script-security 3
 tmp-dir "/etc/openvpn/" # 
-server 10.9.0.0 255.255.255.0
+server 10.7.0.0 255.255.255.0
 push "redirect-gateway def1" 
 push "dhcp-option DNS 1.1.1.1"
 push "dhcp-option DNS 1.0.0.1"
