@@ -3,7 +3,7 @@ for pidproxy in `screen -ls | grep ".proxy" | awk {'print $1'}`; do
 	screen -r -S "$pidproxy" -X quit
 done
 
-port="8010"
+port="gtmnoloadport"
 procss=`netstat -nplt |grep 'python' | awk {'print $4'} | cut -d: -f2 |xargs`
 check=`yum info screen | grep Repo | awk '{ print $3 }'`
 if [ "$check" == "installed" ]; then
@@ -14,7 +14,7 @@ if [ "$check" == "installed" ]; then
 		echo "Socks Proxy has been Started"
 	fi
 else
-	apt-get install screen -y >/dev/null 2>&1
+	yum install screen -y >/dev/null 2>&1
 	sleep 3
 	screen -dmS proxy python /usr/local/sbin/proxy.py $port
 	echo "Socks Proxy Started"
