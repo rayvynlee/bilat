@@ -5,7 +5,7 @@ done
 
 port="8010"
 procss=`netstat -nplt |grep 'python' | awk {'print $4'} | cut -d: -f2 |xargs`
-check=`yum info screen | grep Repo | awk '{ print $3 }'`
+check=`apt-get check screen | grep Repo | awk '{ print $3 }'`
 if [ "$check" == "installed" ]; then
 	if [ -n "$procss" ]; then
 		echo "Socks Proxy already Running"
