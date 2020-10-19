@@ -13,7 +13,7 @@ TIMEOUT = 60
 MSG = 'PisoVPN we make it easy for you.'
 COR = '<font color="green">'
 FTAG = '</font>'
-DEFAULT_HOST = '0.0.0.0:$dport'
+DEFAULT_HOST = '0.0.0.0:DPORT'
 RESPONSE = "HTTP/1.1 200 " + str(COR) + str(MSG) + str(FTAG) + "\r\n\r\n"
  
 class Server(threading.Thread):
