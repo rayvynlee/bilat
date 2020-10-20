@@ -1,0 +1,55 @@
+<?php
+
+error_reporting(E_ALL ^ E_NOTICE);
+
+
+$pisohost = 'PHOST';
+$pisouser = 'PUSER';
+$pisopass = 'PPASS';
+$pisoname = 'PNAME';
+
+$mysqli = new MySQLi($pisohost,$pisouser,$pisopass,$pisoname);
+if ($mysqli->connect_error) {
+    die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
+}
+#Active Accounts
+$private = "ssh_accnt = 1 AND private_duration > 0";
+
+$query2 = $mysqli->query("SELECT * FROM users
+WHERE ".$private." ORDER by user_id DESC");
+if($query2->num_rows > 0)
+{
+	while($row2 = $query2->fetch_assoc())
+	{
+		$username2 = $row2['user_name'];
+		$password2 = $row2['auth_vpn'];
+		$data2 .= 'useradd -p $(openssl passwd -1 '.$password2.') -M '.$username2.' -s /sbin/nologin;';
+	}
+}
+$location = '/usr/sbin/kpn/active.sh';
+$fp = fopen($location, 'w');
+fwrite($fp, $data2) or die("Unable to open file!");
+fclose($fp);
+
+#In-Active and Invalid Accounts
+$inactive = "is_active = 0 OR ssh_accnt = 0 OR duration <= 0 OR vip_duration <= 0 OR private_duration <= 0";
+
+$query3 = $mysqli->query("SELECT * FROM users 
+WHERE ".$inactive." ORDER by user_id DESC");
+if($query3->num_rows > 0)
+{
+	while($row3 = $query3->fetch_assoc())
+	{
+		$toadd3 = $row3['user_name'];	
+		$data3 .= 'userdel -r '.$toadd3.';';
+	}
+}
+$location = '/usr/sbin/kpn/inactive.sh';
+$fp = fopen($location, 'w');
+fwrite($fp, $data3) or die("Unable to open file!");
+fclose($fp);
+
+$mysqli->close();
+
+?>
+
