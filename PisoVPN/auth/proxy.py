@@ -10,8 +10,8 @@ except:
 PASS = ''
 BUFLEN = 8196 * 8
 TIMEOUT = 60
-MSG = 'PisoVPN we make it easy for you.'
-COR = '<font color="green">'
+MSG = 'VPNNAME we make it easy for you.'
+COR = '<font color="fontcolor">'
 FTAG = '</font>'
 DEFAULT_HOST = '0.0.0.0:DPORT'
 RESPONSE = "HTTP/1.1 200 " + str(COR) + str(MSG) + str(FTAG) + "\r\n\r\n"
